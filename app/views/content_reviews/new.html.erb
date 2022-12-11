@@ -1,5 +1,5 @@
 <h1>投稿フォーム</h1>
-  <%= from_with model: @content_reviews do |f| %>
+  <%= form_with model: @content_review do |f| %>
     <h4>画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
     <h4>入手ルート</h4>
