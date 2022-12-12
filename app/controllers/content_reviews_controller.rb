@@ -16,12 +16,21 @@ class ContentReviewsController < ApplicationController
 
 
   def index
+    @content_reviews = ContentReview.all
   end
 
   def show
+    @content_review = ContentReview.find(params[:id])
   end
   
   def edit
+  end
+  
+  def destroy
+    @content_review = ContentReview.find(params[:id])
+    @content_review.destroy
+    redirect_to content_review_path
+    
   end
   
   
@@ -30,7 +39,7 @@ class ContentReviewsController < ApplicationController
   private
   
   def content_review_params
-    params.require(:content_review).permit(:get_root, :price, :review, :image)
+    params.require(:content_review).permit(:get_root, :price, :explanation, :image, :title)
   end
   
   
