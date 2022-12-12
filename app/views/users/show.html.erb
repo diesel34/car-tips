@@ -1,0 +1,24 @@
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  
+  <% if @user == current_user %>
+  <p><%= link_to "プロフィール編集", edit_user_path %></p>
+  <% end %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+<% @content_reviews.each do |content_review| %>
+<div>
+  <%= link_to content_review_path(content_review.id) do %>
+    <%= image_tag content_review.get_image %>
+  <% end %>
+  <p>投稿ユーザー画像：<%= image_tag content_review.user.get_profile_image(100,100) %></p>
+  <p>タイトル：<%= content_review.title %></p>
+  <p>入手ルート:<%= content_review.get_root %></p>
+  <p>購入金額:<%= content_review.price %></p>
+  <p>説明文:<%= content_review.explanation %></p>
+  <p>ユーザーネーム:<%= content_review.user.name %></p>
+</div>
+<% end %>

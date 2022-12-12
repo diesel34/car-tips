@@ -1,12 +1,13 @@
 <% @content_reviews.each do |content_review| %>
 <div>
+  <!--投稿の詳細ページに遷移-->
   <%= link_to content_review_path(content_review.id) do %>
     <%= image_tag content_review.get_image %>
   <% end %>
-
-
-  <%= image_tag content_review.get_image %>
-  <p>投稿ユーザー画像:<%= image_tag 'sample-author1.jpg' %></p>
+  
+  <!--全ての投稿一覧-->
+  <p>投稿ユーザー画像:<%= image_tag content_review.user.get_profile_image(100,100) %></p>
+  
   <p>タイトル:<%= content_review.title %></p>
   <p>入手ルート:<%= content_review.get_root %></p>
   <p>購入金額:<%= content_review.price %></p>

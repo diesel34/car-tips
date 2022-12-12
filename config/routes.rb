@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
+  # 顧客側の登録とログイン
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
   
   
-    
+  # 管理者側のログイン
   devise_for :admins, skip: [:registrations, :passwords],controllers: {
     sessions: "admin/sessions"
   }
@@ -14,8 +15,8 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about', as: 'about'
   root to: 'homes#top'
   
-  resources :content_reviews, only: [:new, :create, :index, :show]
-  
+  resources :content_reviews, only: [:new, :create, :index, :show, :destroy]
+  resources :users, only: [:index, :show, :edit, :update]
   
   
   
