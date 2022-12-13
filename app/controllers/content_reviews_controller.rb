@@ -10,6 +10,7 @@ class ContentReviewsController < ApplicationController
     @content_review = ContentReview.new(content_review_params)
     @content_review.user_id = current_user.id
     if @content_review.save
+      flash[:notice] = "投稿が成功しました"
       redirect_to content_reviews_path
     else
       render :new

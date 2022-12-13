@@ -6,6 +6,7 @@ class ContentCommentsController < ApplicationController
     comment = current_user.content_comments.new(content_comment_params)
     comment.content_review_id = content_review.id
     comment.save
+    flash[:notice] = "コメントが成功しました"
     redirect_to content_review_path(content_review)
   end
 

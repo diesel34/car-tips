@@ -1,34 +1,76 @@
-<h2>Sign up</h2>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <%= form_with model: @user, url: user_registration_path do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+            <div class="field offset-4">
+              <%= f.label :name %><br>
+                <p class="control has-icons-left">
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name", class:'form-control col-6' %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </p>
+            </div>
+            <div class="field offset-4">
+              <%= f.label :email %><br />
+              <p class="control has-icons-left">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control col-6' %>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field offset-4">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <p class="control has-icons-left">
+              <%= f.password_field :password, autocomplete: "new-password", class:'form-control col-6' %>
+                <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field offset-4">
+              <%= f.label :password_confirmation %><br />
+              <p class="control has-icons-left">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control col-6' %>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <div class="actions offset-4">
+              <%= f.submit "Sign up", class: "btn is-success" %>
+            </div>
+          <% end %>
+            <div class="actions offset-4 btn is-success">
+              <%= render "public/shared/links" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+  
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+  
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "public/shared/links" %>
+
+
+
+
+
+
+
+
+
+
+
