@@ -1,4 +1,16 @@
 <h1>投稿フォーム</h1>
+  
+  <!--バリデーションのエラーメッセージ表示-->
+  <% if @content_review.errors.any? %>
+  <%= @content_review.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @content_review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  
+  <!--新規投稿するフォーム-->
   <%= form_with model: @content_review do |f| %>
     <h4>タイトル</h4>
       <%= f.text_field :title %>

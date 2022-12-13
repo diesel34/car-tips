@@ -2,14 +2,52 @@
   <!--投稿の詳細内容-->
 <div>
   <%= image_tag @content_review.get_image %>
-  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>投稿ユーザー画像：<%= image_tag @content_review.user.get_profile_image(100,100) %></p>
   <p>タイトル：<%= @content_review.title %></p>
+  <p>入手ルート：<%= @content_review.get_root %></p>
+  <p>購入金額：<%= @content_review.price %></p>
   <p>説明分：<%= @content_review.explanation %></p>
   <p>ユーザーネーム：<%= @content_review.user.name %></p>
   <p>投稿日時：<%= @content_review.created_at.strftime('%Y/%m/%d') %></p>
   
-    <!--ログインしているユーザーのみの投稿データ削除機能-->
+    <!--ログインしているユーザーのみの投稿データ編集と削除機能-->
   <% if @content_review.user == current_user %>
+    <%= link_to "編集", edit_content_review_path(@content_review) %>
     <%= link_to "削除", content_review_path(@content_review), method: :delete %>
+  <% end %>
+
+  <!--いいね機能で「含まれる時/含まれない時」の表示と機能-->
+  <% if @content_review.favorited_by?(current_user) %>
+    <p>
+      <%= link_to content_review_favorites_path(@content_review), method: :delete do %>
+        ♥<%= @content_review.favorites.count %> いいね
+      <% end %>    
+    </p>
+    <% else %>
+    <p>
+       <%= link_to content_review_favorites_path(@content_review), method: :post do %>
+        ♡<%= @content_review.favorites.count %> いいね
+        <% end %>
+    </p>
+  <% end %>
+</div>
+
+<!--コメント投稿とコメント数の表示-->
+<div>
+  <p>コメント件数:<%= @content_review.content_comments.count %></p>
+  <% @content_review.content_comments.each do |content_comment| %>
+    <p><%= image_tag content_comment.user.get_profile_image(100,100) %></p>
+    <%= content_comment.user.name %>
+    <%= content_comment.created_at.strftime('%Y/%m/%d') %><%= content_comment.comment %>
+    <% if content_comment.user == current_user %>
+      <%= link_to "削除", content_review_content_comment_path(content_comment.content_review, content_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@content_review, @content_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
   <% end %>
 </div>

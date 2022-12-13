@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about', as: 'about'
   root to: 'homes#top'
   
-  resources :content_reviews, only: [:new, :create, :index, :show, :destroy]
+  # content_reviewのidを取得する親子関係
+  resources :content_reviews do
+  patch "content_reviews/:id/edit" => "content_reviews#update"
+    resource :favorites, only: [:create, :destroy]
+    resources :content_comments, only: [:create, :destroy]
+  end
+  
   resources :users, only: [:index, :show, :edit, :update]
   
   

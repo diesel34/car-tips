@@ -5,7 +5,23 @@ class ContentReview < ApplicationRecord
 
   # userに属するアソシエーション
   belongs_to :user
+  
+  # アソシエーションでたくさん持っている側（コメント機能といいね機能）
+  has_many :content_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
+  # バリデーションの設定
+  validates :title, presence:true
+  validates :image, presence:true
+  validates :get_root, presence: true
+  validates :price, presence: true
+  validates :explanation, presence: true
+
+  # ユーザidがfavoritesテーブルに存在するか調べる（trueかfalse）
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+  
   # デフォルトの画像設定
   def get_image
     unless image.attached?

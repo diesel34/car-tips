@@ -62,3 +62,5 @@ gem 'devise'
 gem 'net-imap'
 
 gem 'net-pop'
+
+gem 'kaminari','~> 1.2.1'

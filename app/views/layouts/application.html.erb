@@ -19,6 +19,9 @@
       <li>
       <%= link_to '投稿', new_content_review_path %>
       </li>
+       <li>
+      <%= link_to '投稿一覧', content_reviews_path %>
+      </li>
       <li>
       <%= link_to 'マイページ', user_path(current_user.id) %>
       </li>
@@ -31,6 +34,12 @@
       </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+      <%= link_to '投稿', new_content_review_path %>
+      </li>
+      <li>
+      <%= link_to '投稿一覧', content_reviews_path %>
       </li>
     <% end %>
   </header>

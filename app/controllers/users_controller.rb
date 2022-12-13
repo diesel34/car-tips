@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # ユーザー詳細ページ
   def show
     @user = User.find(params[:id])
-    @content_reviews = @user.content_reviews
+    @content_reviews = @user.content_reviews.page(params[:page])
   end
 
   # ユーザー編集ページ
