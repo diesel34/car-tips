@@ -9,7 +9,7 @@ class ContentReview < ApplicationRecord
   # アソシエーションでたくさん持っている側（コメント機能といいね機能とレビュー機能）
   has_many :content_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   # バリデーションの設定
   validates :title, presence:true

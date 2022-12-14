@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :content_reviews, dependent: :destroy
   has_many :content_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   # ActiveStorageを使って画像を持たせるため(プロフィール画像）
   has_one_attached :profile_image

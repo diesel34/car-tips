@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admins do
+    get 'homes/top'
+  end
   # 顧客側の登録とログイン
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -19,7 +25,7 @@ Rails.application.routes.draw do
   resources :content_reviews do
   patch "content_reviews/:id/edit" => "content_reviews#update"
     resource :favorites, only: [:create, :destroy]
-    resources :reviews, only: [:index, :create]
+    resources :reviews, only: [:create, :index]
     resources :content_comments, only: [:create, :destroy]
   end
   
