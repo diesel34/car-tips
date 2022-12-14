@@ -13,6 +13,7 @@
                   </span>
                 </p>
             </div>
+            
             <div class="field offset-4">
               <%= f.label :email %><br />
               <p class="control has-icons-left">
@@ -22,6 +23,7 @@
                 </span>
               </p>
             </div>
+            
             <div class="field offset-4">
               <%= f.label :password %>
               <% if @minimum_password_length %>
@@ -34,6 +36,7 @@
                 </span>
               </p>
             </div>
+            
             <div class="field offset-4">
               <%= f.label :password_confirmation %><br />
               <p class="control has-icons-left">
@@ -43,10 +46,12 @@
                 </span>
               </p>
             </div>
+            
             <div class="actions offset-4">
               <%= f.submit "Sign up", class: "btn is-success" %>
             </div>
           <% end %>
+          
             <div class="actions offset-4 btn is-success">
               <%= render "public/shared/links" %>
             </div>

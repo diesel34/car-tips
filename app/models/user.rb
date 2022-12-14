@@ -4,10 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # アソシエーションでたくさん持っている側（投稿とコメント機能といいね機能）
+  # アソシエーションでたくさん持っている側（投稿とコメント機能といいね機能とレビュー機能）
   has_many :content_reviews, dependent: :destroy
   has_many :content_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :review, dependent: :destroy
 
   # ActiveStorageを使って画像を持たせるため(プロフィール画像）
   has_one_attached :profile_image

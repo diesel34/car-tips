@@ -4,7 +4,8 @@
   <%= link_to content_review_path(content_review.id) do %>
     <%= image_tag content_review.get_image %>
   <% end %>
-  
+
+      
   <!--全ての投稿一覧-->
   <p>投稿ユーザー画像:<%= image_tag content_review.user.get_profile_image(100,100) %></p>
   
@@ -16,4 +17,3 @@
   <p><%= link_to "#{content_review.content_comments.count} コメント", content_review_path(content_review.id) %></p>
 </div>
 <% end %>
-<%= paginate content_reviews %>

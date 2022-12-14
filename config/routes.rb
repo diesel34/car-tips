@@ -19,12 +19,14 @@ Rails.application.routes.draw do
   resources :content_reviews do
   patch "content_reviews/:id/edit" => "content_reviews#update"
     resource :favorites, only: [:create, :destroy]
+    resources :reviews, only: [:index, :create]
     resources :content_comments, only: [:create, :destroy]
   end
   
   resources :users, only: [:index, :show, :edit, :update]
   
   
+    
   
   
   
