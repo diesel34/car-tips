@@ -23,6 +23,18 @@ class ContentReview < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  def self.search_for(content, method)
+    if method == 'perfect'
+      ContentReview.where(title: content)
+    elsif method == 'forward'
+      ContentReview.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      ContentReview.where('title LIKE ?', '%'+content)
+    else
+      ContentReview.where('title LIKE ?', '%'+content+'%')
+    end
+  end
+  
   # デフォルトの画像設定
   def get_image
     unless image.attached?

@@ -1,0 +1,25 @@
+<h1>管理者showページ</h1>
+ 
+  <!--投稿の詳細内容-->
+<div>
+  <%= image_tag @content_review.get_image %>
+  <p>投稿ユーザー画像：<%= image_tag @content_review.user.get_profile_image(100,100) %></p>
+  <p>タイトル：<%= @content_review.title %></p>
+  <p>入手ルート：<%= @content_review.get_root %></p>
+  <p>購入金額：<%= @content_review.price %></p>
+  <p>説明分：<%= @content_review.explanation %></p>
+  <p>ユーザーネーム：<%= @content_review.user.name %></p>
+  <p>投稿日時：<%= @content_review.created_at.strftime('%Y/%m/%d') %></p>
+  
+  <!--コメント投稿とコメント数の表示-->
+<div>
+  <p>コメント件数:<%= @content_review.content_comments.count %></p>
+  <% @content_review.content_comments.each do |content_comment| %>
+    <p><%= image_tag content_comment.user.get_profile_image(100,100) %></p>
+    <%= content_comment.user.name %>
+    <%= content_comment.created_at.strftime('%Y/%m/%d') %><%= content_comment.comment %>
+    <%# if content_comment.user == current_user %>
+      <%= link_to "削除", admin_content_review_path(content_comment.content_review, content_comment), method: :delete %>
+    <%# end %>
+  <% end %>
+</div>

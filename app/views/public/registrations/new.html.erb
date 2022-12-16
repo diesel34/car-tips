@@ -5,7 +5,7 @@
         <%= form_with model: @user, url: user_registration_path do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
             <div class="field offset-4">
-              <%= f.label :name %><br>
+              <%= f.label :ユーザー名 %><br>
                 <p class="control has-icons-left">
                   <%= f.text_field :name, autofocus: true, autocomplete: "name", class:'form-control col-6' %>
                   <span class="icon is-small is-left">
@@ -15,7 +15,7 @@
             </div>
             
             <div class="field offset-4">
-              <%= f.label :email %><br />
+              <%= f.label :メールアドレス %><br />
               <p class="control has-icons-left">
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control col-6' %>
                 <span class="icon is-small is-left">
@@ -25,9 +25,9 @@
             </div>
             
             <div class="field offset-4">
-              <%= f.label :password %>
+              <%= f.label :パスワード %>
               <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %><br />
               <p class="control has-icons-left">
               <%= f.password_field :password, autocomplete: "new-password", class:'form-control col-6' %>
@@ -38,7 +38,7 @@
             </div>
             
             <div class="field offset-4">
-              <%= f.label :password_confirmation %><br />
+              <%= f.label :パスワード確認 %><br />
               <p class="control has-icons-left">
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control col-6' %>
                 <span class="icon is-small is-left">

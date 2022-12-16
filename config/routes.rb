@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admins do
-    get 'homes/top'
-  end
+  root to: 'homes#top'
+  get 'admin' => 'admin/homes#top'
+  get '/homes/about' => 'homes#about', as: 'about'
+  get 'searches/search'
+  patch "content_reviews/:id/edit" => "content_reviews#update"
+  
+  
   # 顧客側の登録とログイン
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -18,18 +19,21 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-  get '/homes/about' => 'homes#about', as: 'about'
-  root to: 'homes#top'
+  resources :users, only: [:index, :show, :edit, :update]
   
   # content_reviewのidを取得する親子関係
   resources :content_reviews do
-  patch "content_reviews/:id/edit" => "content_reviews#update"
     resource :favorites, only: [:create, :destroy]
     resources :reviews, only: [:create, :index]
     resources :content_comments, only: [:create, :destroy]
   end
+    
+  namespace :admin do
+    resources :content_reviews, only: [:index, :show, :edit, :create, :destroy]
+  end
   
-  resources :users, only: [:index, :show, :edit, :update]
+ 
+  
   
   
     

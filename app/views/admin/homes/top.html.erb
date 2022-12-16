@@ -1,2 +1,16 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>管理者ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+  <!--投稿の詳細ページに遷移-->
+    <%#= image_tag content_review.get_image %>
+  <%# end %>
+
+      
+  <div>
+  <!--全ての投稿一覧-->
+  <%= link_to user_path(user.id) do %>
+    <p>ユーザー画像:<%= image_tag user.get_profile_image(100,100) %></p>
+  <% end %>
+  <p>ユーザーネーム:<%= user.name %></p>
+</div>
+<% end %>

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  # ユーザー登録、ログイン認証が使われる前に、configure_permitted_parametersメソッドを実行する
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
+   # サインイン後の遷移先を投稿一覧ページへ
+  def after_sign_up_path_for(_resource)
+    content_reviews_path
+  end
+  
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,4 +67,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+   protected
+  # ユーザー登録の際に、ユーザー名のデータ操作の許可をしている
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+  
+  
 end

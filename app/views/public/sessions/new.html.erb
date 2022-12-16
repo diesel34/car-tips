@@ -4,7 +4,7 @@
       <div class="column is-5">
         <%= form_with model: @user, url: user_session_path do |f| %>
           <div class="field offset-4">
-            <%= f.label :email %><br />
+            <%= f.label :メールアドレス %><br />
             <p class="control has-icons-left">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control col-6' %>
               <span class="icon is-small is-left">
@@ -14,7 +14,7 @@
           </div>
 
           <div class="field offset-4">
-            <%= f.label :password %><br />
+            <%= f.label :パスワード %><br />
             <p class="control has-icons-left">
               <%= f.password_field :password, autocomplete: "current-password", class:'form-control col-6' %>
               <span class="icon is-small is-left">

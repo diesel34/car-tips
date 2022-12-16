@@ -15,7 +15,7 @@
   <body>
     <header>
     
-    <!--ログインしている時としていない時の表示-->
+    <!--ユーザーでログインしている時-->
     <% if user_signed_in? %>
       <li>
       <%= link_to '投稿', new_content_review_path %>
@@ -28,8 +28,23 @@
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li><br>
+      <%= render 'layouts/search' %>
+      
+      <!--adminでログインしている時-->
+    <% elsif admin_signed_in? %>
+      <li>
+      <%= link_to '投稿一覧', admin_content_reviews_path %>
       </li>
+      <li>
+      <%= link_to 'ユーザー一覧', admin_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      
     <% else %>
+      <!--ログインしていない時-->
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
       </li>

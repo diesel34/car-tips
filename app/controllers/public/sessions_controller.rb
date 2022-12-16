@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  
+  # ログイン時にuser_stateメソッドを実行する
   before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -36,7 +38,7 @@ def user_state
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
   if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
     flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-      redirect_to new_user_registration
+      redirect_to new_user_registration_path
   end
 end
 end

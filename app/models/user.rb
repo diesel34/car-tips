@@ -13,6 +13,20 @@ class User < ApplicationRecord
   # ActiveStorageを使って画像を持たせるため(プロフィール画像）
   has_one_attached :profile_image
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
+
+
   # メソッドに引数設定し、設定した値に画像サイズの変換をする
   def get_profile_image(width, height)
   unless profile_image.attached?

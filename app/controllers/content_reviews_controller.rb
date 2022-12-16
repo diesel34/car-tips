@@ -3,7 +3,6 @@ class ContentReviewsController < ApplicationController
   # 新規投稿のデータ
   def new
     @content_review = ContentReview.new  
-    @review = Review.new
   end
 
   # 投稿データの保存
@@ -50,6 +49,7 @@ class ContentReviewsController < ApplicationController
     @content_review.destroy
     redirect_to content_reviews_path    
   end
+
   
   
   

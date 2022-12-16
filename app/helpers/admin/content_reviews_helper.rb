@@ -1,0 +1,2 @@
+module Admin::ContentReviewsHelper
+end
