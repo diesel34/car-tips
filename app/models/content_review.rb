@@ -23,6 +23,7 @@ class ContentReview < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  # ５段階星レビューの機能
   def self.search_for(content, method)
     if method == 'perfect'
       ContentReview.where(title: content)

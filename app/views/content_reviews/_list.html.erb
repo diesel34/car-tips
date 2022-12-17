@@ -15,6 +15,7 @@
   <p>説明文:<%= content_review.explanation %></p>
   <p>ユーザーネーム:<%= content_review.user.name %></p>
   <p><%= link_to "#{content_review.content_comments.count} コメント", content_review_path(content_review.id) %></p>
+  <%= render 'content_reviews/static_rate', content_review: content_review %>
 </div>
   <% elsif admin_signed_in? %>
   <p>投稿ユーザー画像:<%= image_tag content_review.user.get_profile_image(100,100) %></p>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   root to: 'homes#top'
   get 'admin' => 'admin/homes#top'
   get '/homes/about' => 'homes#about', as: 'about'
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   end
     
   namespace :admin do
+    get 'content_comments/destroy'
     resources :content_reviews, only: [:index, :show, :edit, :create, :destroy]
   end
   
