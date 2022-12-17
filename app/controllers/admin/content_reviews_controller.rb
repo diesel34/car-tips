@@ -2,7 +2,8 @@ class Admin::ContentReviewsController < ApplicationController
   
     # 全ての投稿一覧（管理者側）
   def index
-    @content_reviews = ContentReview.all
+    # @content_reviews = ContentReview.all
+    @content_reviews = ContentReview.page(params[:page])
   end
 
     # 各ユーザーの投稿一覧（管理者側）

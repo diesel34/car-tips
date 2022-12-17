@@ -1,4 +1,4 @@
-<div id="rate_<%= content_review %>"></div>
+<div id="rate_<%= content_review.id %>"></div>
 <script>
 $(document).on('turbolinks:load', function() {
     let raty_<%= content_review.id %> = document.querySelector('#rate_<%= content_review.id %>');
@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function() {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        score: "<%= content_review.rate %>",
+        score: "<%= content_review.score %>",
         readOnly: true,
       };
     raty(raty_<%= content_review.id %> ,option_<%= content_review.id %>);

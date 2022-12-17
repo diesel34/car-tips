@@ -30,9 +30,10 @@ Rails.application.routes.draw do
   end
     
   namespace :admin do
-    get 'content_comments/destroy'
     resources :content_reviews, only: [:index, :show, :edit, :create, :destroy]
+    resources :content_comments, only: [:destroy]
   end
+    
   
  
   

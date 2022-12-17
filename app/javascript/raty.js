@@ -31,7 +31,7 @@ class Raty {
       click: undefined,
       half: true,
       halfShow: true,
-      hints: ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+      hints: ['非常に悪い', '悪い', '普通', '良い', '非常に良い'],
       iconRange: undefined,
       iconRangeSame: false,
       mouseout: undefined,

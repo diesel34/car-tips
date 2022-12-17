@@ -14,3 +14,5 @@
 
 <!--ユーザーの投稿一覧-->
 <%= render 'content_reviews/list', content_reviews: @content_reviews %>
+
+<%= paginate @content_reviews %>

@@ -19,7 +19,7 @@
     <%= content_comment.user.name %>
     <%= content_comment.created_at.strftime('%Y/%m/%d') %><%= content_comment.comment %>
     <%# if content_comment.user == current_user %>
-      <%= link_to "削除", admin_content_review_path(content_comment.content_review, content_comment.id), method: :delete %>
+      <%= link_to "削除", admin_content_comment_path(content_comment.content_review, content_comment.id), method: :delete %>
     <%# end %>
   <% end %>
 </div>

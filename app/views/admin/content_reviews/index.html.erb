@@ -21,3 +21,5 @@
 <!--ログインしているユーザーのみの投稿データ編集と削除機能-->
   <%# if @content_review.user != current_user %>
   <%# end %>
+  
+<%= paginate @content_reviews %>
