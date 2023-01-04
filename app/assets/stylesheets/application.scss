@@ -14,11 +14,10 @@
  *= require_self
  */
 
-@import "bulma";
+// @import "bulma";
 
 body {
   min-height: 100vh;
-  color: white;
   background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
   font-family: sans-serif;
 }
